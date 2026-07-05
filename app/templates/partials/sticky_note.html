@@ -16,12 +16,14 @@
   <div class="flex items-center justify-center h-full overflow-hidden
               group-hover:opacity-0 transition-opacity duration-150
               max-md:flex-row max-md:h-full max-md:px-4 max-md:justify-center">
-    <span class="font-queens-condensed font-light text-xs text-warm-brown/40 tracking-[0.2em]
+    <span class="font-queens-condensed font-light text-xs tracking-[0.2em]
                  whitespace-nowrap
                  max-md:[writing-mode:horizontal-tb] max-md:tracking-[0.3em] max-md:text-[10px]"
           style="writing-mode: vertical-lr; text-orientation: mixed;">
+      <span class="font-extrabold text-black">&#9679;</span>
+      <span class="text-warm-brown/40"> &middot; </span>
       {% for section in toc_sections | default([]) %}
-      {{ section.numeral | replace('.', '') }}{% if not loop.last %} &middot; {% endif %}
+      <span class="text-warm-brown/40">{{ section.numeral | replace('.', '') }}</span>{% if not loop.last %}<span class="text-warm-brown/40"> &middot; </span>{% endif %}
       {% endfor %}
     </span>
   </div>
@@ -32,13 +34,22 @@
               transition-opacity duration-150
               max-md:relative max-md:inset-auto max-md:p-4">
     <ul class="flex flex-col justify-center h-full px-4 space-y-4 max-md:space-y-2">
-      {% for section in toc_sections | default([]) %}
+      {# Home / front page indicator #}
       <li class="scale-95 group-hover:scale-100 transition-transform duration-[375ms] ease-out origin-left">
+        <a href="/"
+           class="block font-queens text-[13px] text-warm-brown leading-tight whitespace-nowrap
+                  hover:opacity-60 transition-opacity">
+          <span class="inline-block w-5 font-extrabold text-[15px] text-black">&#9679;</span>
+          <span class="ml-1 font-medium">Cover</span>
+        </a>
+      </li>
+      {% for section in toc_sections | default([]) %}
+      <li class="scale-95 group-hover:scale-100 transition-transform duration-[375ms] ease-out origin-left group/row">
         <a href="#"
            class="block font-queens text-[13px] text-warm-brown leading-tight whitespace-nowrap
                   hover:opacity-60 transition-opacity">
-          <span class="inline-block w-5 font-extrabold text-[15px] text-black">{{ section.numeral }}</span>
-          <span class="ml-1">{{ section.label }}</span>
+          <span class="inline-block w-5 font-extrabold text-[15px] text-warm-brown/40">{{ section.numeral }}</span>
+          <span class="ml-1 opacity-0 group-hover/row:opacity-100 transition-opacity duration-150">{{ section.label }}</span>
         </a>
       </li>
       {% endfor %}
