@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-neutral-950 text-white">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Photography Portfolio{% endblock %}</title>
+  <script src="https://unpkg.com/htmx.org@2.0.4" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/static/css/output.css">
+  <script defer src="/static/js/app.js"></script>
+</head>
+<body class="min-h-screen">
+  <header class="border-b border-neutral-800">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-lg font-medium tracking-tight">Portfolio</a>
+      <div class="flex gap-6 text-sm text-neutral-400">
+        <button hx-get="/grid?category=all" hx-target="#gallery-grid" hx-swap="innerHTML"
+                class="hover:text-white transition-colors">All</button>
+        {% for cat in categories %}
+        <button hx-get="/grid?category={{ cat }}" hx-target="#gallery-grid" hx-swap="innerHTML"
+                class="hover:text-white transition-colors">{{ cat | capitalize }}</button>
+        {% endfor %}
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Lightbox container: starts empty, populated by HTMX -->
+  <div id="lightbox" class="hidden fixed inset-0 z-50"></div>
+</body>
+</html>

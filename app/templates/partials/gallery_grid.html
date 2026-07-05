@@ -1,0 +1,17 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+  {% for photo in photos %}
+  <a href="#"
+     hx-get="/photo/{{ photo.id }}"
+     hx-target="#lightbox"
+     hx-swap="innerHTML"
+     hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')"
+     class="group overflow-hidden bg-neutral-900 rounded-sm">
+    <img src="{{ photo.thumb_url }}"
+         alt="{{ photo.title }}"
+         loading="lazy"
+         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+  </a>
+  {% else %}
+  <p class="col-span-full text-center text-neutral-500 py-20">No photos yet.</p>
+  {% endfor %}
+</div>

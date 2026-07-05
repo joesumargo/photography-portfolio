@@ -1,0 +1,27 @@
+photos:
+  - id: "mountain-sunset"
+    title: "Mountain Sunset"
+    description: "Golden hour light cascading over the mountain range."
+    date: "2025-08-15"
+    category: "landscape"
+    location: "Sierra Nevada, CA"
+    camera: "Sony A7 IV | 24-70mm f/2.8"
+    featured: true
+
+  - id: "misty-morning"
+    title: "Misty Morning"
+    description: "Fog rolling over the bridge at dawn."
+    date: "2025-11-03"
+    category: "cityscape"
+    location: "San Francisco, CA"
+    camera: "Fujifilm X-T5 | 35mm f/1.4"
+    featured: false
+
+  - id: "harbor-dusk"
+    title: "Harbor at Dusk"
+    description: "Boats resting as the last light fades."
+    date: "2025-06-22"
+    category: "landscape"
+    location: "Seattle, WA"
+    camera: "Nikon Z8 | 50mm f/1.8"
+    featured: false
