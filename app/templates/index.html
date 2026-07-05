@@ -1,9 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto px-4 sm:px-6">
-  <div id="gallery-grid">
-    {% include "partials/gallery_grid.html" %}
-  </div>
+<div class="flex h-screen max-md:flex-col max-md:h-auto max-md:min-h-screen">
+
+  {# ── Left: Image grid (~60%) ─────────────────────────────────── #}
+  <section class="w-[60%] flex items-center px-6 max-lg:w-[55%] max-md:w-full max-md:px-4 max-md:py-8">
+    <div class="grid grid-cols-3 gap-6 w-full max-w-[640px] mx-auto
+                max-lg:grid-cols-2 max-lg:gap-4 max-lg:max-w-[420px]
+                max-md:grid-cols-2 max-md:gap-3 max-md:max-w-none">
+
+      {% for i in range(6) %}
+      <div class="aspect-[3/4] border border-rule bg-placeholder
+                  {% if loop.index == 2 or loop.index == 5 %}md:scale-[0.92]{% endif %}
+                  {% if loop.index == 3 %}md:scale-[0.96]{% endif %}"
+           style="{% if loop.index == 1 %}height: 105%;{% elif loop.index == 4 %}height: 103%;{% endif %}">
+      </div>
+      {% endfor %}
+
+    </div>
+  </section>
+
+  {# ── Right: Typographic zone (~35%) ──────────────────────────── #}
+  <section class="w-[35%] flex flex-col justify-between py-8 pr-10
+                  max-lg:w-[40%] max-lg:pr-6
+                  max-md:w-full max-md:pr-4 max-md:py-6 max-md:gap-16">
+
+    {# Top block: location line + rule #}
+    <div>
+      <p class="font-queens font-light italic text-sm tracking-[0.15em] text-warm-brown/80
+                max-md:text-xs">
+        Based in the United Kingdom
+      </p>
+      <hr class="mt-6 w-[120px] border-rule max-md:mt-4 max-md:w-[80px]">
+    </div>
+
+    {# Bottom block: Table of Contents #}
+    <div class="pb-6">
+      <ul class="space-y-7 max-lg:space-y-5 max-md:space-y-4">
+        {% for section in toc_sections %}
+        <li>
+          <a href="#" class="group/toc block">
+            <span class="font-queens font-extrabold text-[52px] leading-none tracking-tight text-warm-brown
+                         max-lg:text-[40px] max-md:text-[32px]">
+              {{ section.numeral }}
+            </span>
+            <span class="font-queens font-normal text-lg tracking-[0.05em] text-warm-brown align-bottom ml-3
+                         max-lg:text-base max-md:text-sm max-md:ml-2">
+              {{ section.label }}
+            </span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </section>
+
 </div>
 {% endblock %}
