@@ -1,3 +1,58 @@
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Queens';
+  src: url('../../fonts/QueensTrial-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Queens Condensed';
+  src: url('../../fonts/QueensCondensedTrial-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Queens Condensed';
+  src: url('../../fonts/QueensCondensedTrial-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
