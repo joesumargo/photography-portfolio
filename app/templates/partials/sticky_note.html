@@ -1,0 +1,44 @@
+{# Sticky note table-of-contents navigation.
+   Expects `toc_sections` in context: list of {numeral: str, label: str}.
+   On desktop: fixed left sidebar, collapses to Roman numerals, expands on hover.
+   On mobile: thin horizontal strip at the bottom of the viewport.
+#}
+<aside
+  class="fixed left-0 top-0 h-full w-sticky hover:w-sticky-expanded
+         bg-cream border-r border-rule z-40
+         transition-all duration-300 ease-out group overflow-hidden
+         max-md:top-auto max-md:bottom-0 max-md:w-full max-md:h-[32px]
+         max-md:hover:w-full max-md:hover:h-auto
+         max-md:border-r-0 max-md:border-t"
+  aria-label="Table of contents">
+
+  {# --- Collapsed state: vertical Roman numerals (desktop) / horizontal (mobile) --- #}
+  <div class="flex items-center justify-center h-full group-hover:opacity-0 transition-opacity duration-200
+              max-md:flex-row max-md:h-full max-md:px-4 max-md:justify-center">
+    <span class="font-queens-condensed font-light text-xs text-warm-brown/40 tracking-[0.2em]
+                 max-md:[writing-mode:horizontal-tb] max-md:tracking-[0.3em] max-md:text-[10px]"
+          style="writing-mode: vertical-lr; text-orientation: mixed;">
+      {% for section in toc_sections %}
+      {{ section.numeral | replace('.', '') }}{% if not loop.last %} &middot; {% endif %}
+      {% endfor %}
+    </span>
+  </div>
+
+  {# --- Expanded state: full labels (desktop) --- #}
+  <nav class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100
+              max-md:relative max-md:inset-auto max-md:p-4">
+    <ul class="flex flex-col justify-center h-full px-4 space-y-4 max-md:space-y-2">
+      {% for section in toc_sections %}
+      <li class="transition-opacity duration-200"
+          style="transition-delay: {{ loop.index0 * 50 }}ms">
+        <a href="#"
+           class="block font-queens text-[13px] text-warm-brown leading-tight
+                  hover:opacity-60 transition-opacity">
+          <span class="font-extrabold text-[15px]">{{ section.numeral }}</span>
+          <span class="ml-1">{{ section.label }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>
