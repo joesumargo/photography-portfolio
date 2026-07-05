@@ -4,18 +4,22 @@ from app.router import templates
 
 router = APIRouter()
 
+TOC_SECTIONS = [
+    {"numeral": "I.",   "label": "Collection One"},
+    {"numeral": "II.",  "label": "Collection Two"},
+    {"numeral": "III.", "label": "Collection Three"},
+    {"numeral": "IV.",  "label": "Collection Four"},
+    {"numeral": "V.",   "label": "Collection Five"},
+    {"numeral": "VI.",  "label": "Collection Six"},
+]
+
 
 @router.get("/")
 async def index(request: Request):
-    gallery_service = request.app.state.gallery_service
-    photos = gallery_service.list_photos()
-    categories = gallery_service.categories
     return templates.TemplateResponse(
         request=request,
         name="index.html",
         context={
-            "photos": photos,
-            "categories": categories,
-            "active_category": "all",
+            "toc_sections": TOC_SECTIONS,
         },
     )

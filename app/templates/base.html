@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-neutral-950 text-white">
+<html lang="en" class="bg-cream text-warm-brown">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +8,20 @@
   <link rel="stylesheet" href="/static/css/output.css">
   <script defer src="/static/js/app.js"></script>
 </head>
-<body class="min-h-screen">
-  <header class="border-b border-neutral-800">
-    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="text-lg font-medium tracking-tight">Portfolio</a>
-      <div class="flex gap-6 text-sm text-neutral-400">
-        <button hx-get="/grid?category=all" hx-target="#gallery-grid" hx-swap="innerHTML"
-                class="hover:text-white transition-colors">All</button>
-        {% for cat in categories %}
-        <button hx-get="/grid?category={{ cat }}" hx-target="#gallery-grid" hx-swap="innerHTML"
-                class="hover:text-white transition-colors">{{ cat | capitalize }}</button>
-        {% endfor %}
-      </div>
-    </nav>
-  </header>
+<body class="min-h-screen font-queens antialiased">
 
-  <main class="pt-4">
+  {% block nav %}
+  {% if toc_sections is defined %}
+  {% include "partials/sticky_note.html" %}
+  {% endif %}
+  {% endblock %}
+
+  <main class="{% if toc_sections is defined %}ml-sticky max-md:ml-0 max-md:mb-[32px]{% endif %} min-h-screen">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Lightbox container: starts empty, populated by HTMX -->
+  <!-- Lightbox container: populated by HTMX on interior pages -->
   <div id="lightbox" class="hidden fixed inset-0 z-50"></div>
+
 </body>
 </html>
