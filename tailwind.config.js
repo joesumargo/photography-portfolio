@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        cream: '#FFFFE3',
+        cream: '#F2F0EF',
         'warm-brown': '#2C2416',
         rule: '#E8E0C8',
         placeholder: '#F2ECDA',

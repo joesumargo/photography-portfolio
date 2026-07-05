@@ -39,6 +39,11 @@ def create_app(
     static_dir.mkdir(exist_ok=True)
     app.mount("/static", StaticFiles(directory="static"), name="static")
 
+    # Mount fonts directory for @font-face src references
+    fonts_dir = Path("fonts")
+    if fonts_dir.is_dir():
+        app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
+
     # Register routers
     from app.router.htmx import router as htmx_router
     from app.router.pages import router as pages_router
