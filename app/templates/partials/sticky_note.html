@@ -18,7 +18,7 @@
     <span class="font-queens-condensed font-light text-xs text-warm-brown/40 tracking-[0.2em]
                  max-md:[writing-mode:horizontal-tb] max-md:tracking-[0.3em] max-md:text-[10px]"
           style="writing-mode: vertical-lr; text-orientation: mixed;">
-      {% for section in toc_sections %}
+      {% for section in toc_sections | default([]) %}
       {{ section.numeral | replace('.', '') }}{% if not loop.last %} &middot; {% endif %}
       {% endfor %}
     </span>
@@ -28,7 +28,7 @@
   <nav class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100
               max-md:relative max-md:inset-auto max-md:p-4">
     <ul class="flex flex-col justify-center h-full px-4 space-y-4 max-md:space-y-2">
-      {% for section in toc_sections %}
+      {% for section in toc_sections | default([]) %}
       <li class="transition-opacity duration-200"
           style="transition-delay: {{ loop.index0 * 50 }}ms">
         <a href="#"
