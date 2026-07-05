@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Fonts (trial license — do not commit)
+fonts/
+
+# Claude Code stuff
+docs/
+.superpowers/
+.claude
