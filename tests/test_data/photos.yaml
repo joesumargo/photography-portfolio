@@ -1,0 +1,16 @@
+photos:
+  - id: "test-landscape"
+    title: "Test Landscape"
+    description: "A test landscape photo."
+    date: "2025-01-15"
+    category: "landscape"
+    location: "Test Location"
+    camera: "Test Camera"
+    featured: true
+
+  - id: "test-portrait"
+    title: "Test Portrait"
+    description: "A test portrait photo."
+    date: "2025-03-20"
+    category: "portrait"
+    featured: false
