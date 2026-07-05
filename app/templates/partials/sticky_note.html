@@ -6,7 +6,7 @@
 <aside
   class="fixed left-0 top-0 h-full w-sticky hover:w-sticky-expanded
          bg-cream border-r border-rule z-40
-         transition-all duration-300 ease-out group overflow-hidden
+         transition-all duration-[225ms] ease-out group overflow-hidden
          max-md:top-auto max-md:bottom-0 max-md:w-full max-md:h-[32px]
          max-md:hover:w-full max-md:hover:h-auto
          max-md:border-r-0 max-md:border-t"
@@ -14,7 +14,7 @@
 
   {# --- Collapsed state: vertical Roman numerals (desktop) / horizontal (mobile) --- #}
   <div class="flex items-center justify-center h-full overflow-hidden
-              group-hover:opacity-0 transition-opacity duration-200
+              group-hover:opacity-0 transition-opacity duration-150
               max-md:flex-row max-md:h-full max-md:px-4 max-md:justify-center">
     <span class="font-queens-condensed font-light text-xs text-warm-brown/40 tracking-[0.2em]
                  whitespace-nowrap
@@ -29,11 +29,11 @@
   {# --- Expanded state: full labels (desktop) --- #}
   <nav class="absolute inset-0 opacity-0 group-hover:opacity-100
               pointer-events-none group-hover:pointer-events-auto
-              transition-opacity duration-200
+              transition-opacity duration-150
               max-md:relative max-md:inset-auto max-md:p-4">
     <ul class="flex flex-col justify-center h-full px-4 space-y-4 max-md:space-y-2">
       {% for section in toc_sections | default([]) %}
-      <li>
+      <li class="scale-95 group-hover:scale-100 transition-transform duration-[375ms] ease-out origin-left">
         <a href="#"
            class="block font-queens text-[13px] text-warm-brown leading-tight whitespace-nowrap
                   hover:opacity-60 transition-opacity">
