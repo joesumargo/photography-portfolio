@@ -45,7 +45,7 @@
       </li>
       {% for section in toc_sections | default([]) %}
       <li class="scale-95 group-hover:scale-100 transition-transform duration-[375ms] ease-out origin-left group/row">
-        <a href="#"
+        <a href="{% if section.slug %}/{{ section.slug }}{% else %}#{% endif %}"
            class="block font-queens text-[13px] text-warm-brown leading-tight whitespace-nowrap
                   hover:opacity-60 transition-opacity">
           <span class="inline-block w-5 font-extrabold text-[15px] text-warm-brown/40">{{ section.numeral }}</span>

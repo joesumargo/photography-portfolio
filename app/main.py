@@ -50,11 +50,13 @@ def create_app(
         app.mount("/fonts", StaticFiles(directory="fonts"), name="fonts")
 
     # Register routers
+    # htmx_router first so /grid, /photo/{photo_id} are matched
+    # before the catch-all /{collection_slug} on pages_router.
     from app.router.htmx import router as htmx_router
     from app.router.pages import router as pages_router
 
-    app.include_router(pages_router)
     app.include_router(htmx_router)
+    app.include_router(pages_router)
 
     # Store gallery service reference for routers to use
     app.state.gallery_service = gallery_service
