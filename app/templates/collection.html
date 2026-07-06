@@ -6,7 +6,7 @@
 <div class="flex min-h-screen max-md:flex-col max-md:h-auto">
 
   {# ── Left: Collection info (~35-40%) ──────────────────── #}
-  <section class="w-[40%] flex flex-col justify-start pt-24 px-8
+  <section class="w-[40%] flex flex-col justify-start pt-24 pl-20 pr-8
                   max-md:w-full max-md:pt-12 max-md:px-4 max-md:order-1">
     <h1 class="font-queens text-[48px] leading-none tracking-tight text-warm-brown">
       {{ collection.title }}
@@ -18,27 +18,28 @@
     {% endif %}
   </section>
 
-  {# ── Right: Photo stack (~60%) ───────────────────────── #}
-  <section class="w-[60%] py-12 pr-8
+  {# ── Right: Photo grid (~60%) ─────────────────────────── #}
+  <section class="w-[60%] flex items-center py-6 pr-12
                   max-md:w-full max-md:px-4 max-md:py-8 max-md:order-2">
-    <div class="flex flex-col items-end gap-12">
+    <div class="grid grid-cols-3 gap-4 w-full">
       {% for photo in collection.photos[:5] %}
-      <div class="flex items-start gap-4">
-        <span class="font-queens font-extrabold text-[22px] text-warm-brown/30 mt-1.5 shrink-0 select-none">
+      <div class="flex flex-col gap-1">
+        <span class="font-queens font-extrabold text-[12px] text-warm-brown/30 shrink-0 select-none self-end">
           {{ photo_numerals[loop.index0] }}
         </span>
         <a href="#"
-           hx-get="/photo/{{ photo.id }}"
+           hx-get="/photo/{{ photo.id }}?src=/static/photos/real/home/{{ photo.id }}.jpg"
            hx-target="#lightbox"
            hx-swap="innerHTML"
-           hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')">
+           hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')"
+           class="block hover:opacity-80 transition-opacity duration-200">
           <img src="/static/photos/real/home/{{ photo.id }}.jpg"
                alt="{{ photo.title }}"
-               class="w-auto h-auto max-h-[500px] rounded-sm shadow-lg">
+               class="w-full aspect-[7/8] object-cover rounded-sm shadow-md">
         </a>
       </div>
       {% else %}
-      <p class="font-queens text-base text-warm-brown/50 italic">No photos in this collection yet.</p>
+      <p class="font-queens text-base text-warm-brown/50 italic col-span-full">No photos in this collection yet.</p>
       {% endfor %}
     </div>
   </section>

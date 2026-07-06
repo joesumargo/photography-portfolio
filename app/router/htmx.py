@@ -17,7 +17,7 @@ async def gallery_grid(request: Request, category: str = Query("all")):
 
 
 @router.get("/photo/{photo_id}")
-async def photo_lightbox(request: Request, photo_id: str):
+async def photo_lightbox(request: Request, photo_id: str, src: str = ""):
     gallery_service = request.app.state.gallery_service
     photo = gallery_service.get_photo(photo_id)
     if not photo:
@@ -25,5 +25,5 @@ async def photo_lightbox(request: Request, photo_id: str):
     return templates.TemplateResponse(
         request=request,
         name="partials/lightbox.html",
-        context={"photo": photo},
+        context={"photo": photo, "image_src": src or photo.medium_url},
     )

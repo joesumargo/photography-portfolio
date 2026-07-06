@@ -36,5 +36,5 @@ def test_collection_not_found(client):
 def test_collection_page_has_lightbox_triggers(client):
     """Collection page images should have HTMX lightbox attributes."""
     response = client.get("/featured")
-    assert 'hx-get="/photo/test-landscape"' in response.text
+    assert 'hx-get="/photo/test-landscape?src=' in response.text
     assert 'hx-target="#lightbox"' in response.text
