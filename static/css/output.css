@@ -682,10 +682,6 @@ video {
   pointer-events: none;
 }
 
-.invisible {
-  visibility: hidden;
-}
-
 .fixed {
   position: fixed;
 }
@@ -1173,11 +1169,6 @@ video {
   width: 180px;
 }
 
-.hover\:w-fit:hover {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
 .hover\:border-warm-brown\/30:hover {
   border-color: rgb(44 36 22 / 0.3);
 }
@@ -1193,10 +1184,6 @@ video {
 
 .group:hover .group-hover\:pointer-events-auto {
   pointer-events: auto;
-}
-
-.group\/row:hover .group-hover\/row\:visible {
-  visibility: visible;
 }
 
 .group:hover .group-hover\:scale-100 {
@@ -1215,15 +1202,15 @@ video {
   color: rgb(44 36 22 / 0.5);
 }
 
+.group\/row:hover .group-hover\/row\:opacity-100 {
+  opacity: 1;
+}
+
 .group:hover .group-hover\:opacity-0 {
   opacity: 0;
 }
 
 .group:hover .group-hover\:opacity-100 {
-  opacity: 1;
-}
-
-.group\/row:hover .group-hover\/row\:opacity-100 {
   opacity: 1;
 }
 
