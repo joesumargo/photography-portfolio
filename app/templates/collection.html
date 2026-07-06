@@ -28,12 +28,12 @@
           {{ photo_numerals[loop.index0] }}
         </span>
         <a href="#"
-           hx-get="/photo/{{ photo.id }}?src=/static/photos/real/home/{{ photo.id }}.jpg"
+           hx-get="/photo/{{ photo.id }}"
            hx-target="#lightbox"
            hx-swap="innerHTML"
            hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')"
            class="block hover:opacity-80 transition-opacity duration-200">
-          <img src="/static/photos/real/home/{{ photo.id }}.jpg"
+          <img src="{{ photo.thumb_url }}"
                alt="{{ photo.title }}"
                class="w-full aspect-[7/8] object-cover rounded-sm shadow-md">
         </a>

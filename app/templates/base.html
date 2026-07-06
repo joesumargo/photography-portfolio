@@ -10,9 +10,28 @@
   <style>
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+    /* Page transitions — roll right-to-left via HTMX */
+    body.htmx-swapping main {
+      animation: roll-out-left 250ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+    body.htmx-settling main {
+      animation: roll-in-right 250ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    }
+
+    @keyframes roll-out-left {
+      from { transform: translateX(0); opacity: 1; }
+      to   { transform: translateX(-25%); opacity: 0; }
+    }
+    @keyframes roll-in-right {
+      from { transform: translateX(25%); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
   </style>
 </head>
-<body class="min-h-screen font-queens antialiased">
+<body class="min-h-screen font-queens antialiased"
+      hx-boost="true"
+      hx-swap="innerHTML swap:250ms settle:250ms">
 
   {% block nav %}
   {% if toc_sections is defined %}
