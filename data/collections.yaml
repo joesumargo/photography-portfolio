@@ -1,0 +1,5 @@
+collections:
+  - slug: "home"
+    title: "Home"
+    description: ""
+    photos: ["home-1", "home-2", "home-3", "home-4", "home-5"]

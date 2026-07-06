@@ -25,3 +25,38 @@ photos:
     location: "Seattle, WA"
     camera: "Nikon Z8 | 50mm f/1.8"
     featured: false
+
+  - id: "home-1"
+    title: "Home — I"
+    description: ""
+    date: "2025-01-01"
+    category: "home"
+    featured: false
+
+  - id: "home-2"
+    title: "Home — II"
+    description: ""
+    date: "2025-01-02"
+    category: "home"
+    featured: false
+
+  - id: "home-3"
+    title: "Home — III"
+    description: ""
+    date: "2025-01-03"
+    category: "home"
+    featured: false
+
+  - id: "home-4"
+    title: "Home — IV"
+    description: ""
+    date: "2025-01-04"
+    category: "home"
+    featured: false
+
+  - id: "home-5"
+    title: "Home — V"
+    description: ""
+    date: "2025-01-05"
+    category: "home"
+    featured: false
