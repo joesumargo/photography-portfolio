@@ -6,6 +6,13 @@ router = APIRouter()
 
 ROMAN_NUMERALS = ["I.", "II.", "III.", "IV.", "V.", "VI."]
 
+_PHOTO_NUMERALS = [
+    "I", "II", "III", "IV", "V",
+    "VI", "VII", "VIII", "IX", "X",
+    "XI", "XII", "XIII", "XIV", "XV",
+    "XVI", "XVII", "XVIII", "XIX", "XX",
+]
+
 
 def _build_toc_sections(gallery_service, active_slug: str | None = None) -> list[dict]:
     """Build TOC sections from collections, padded to 6 slots."""
@@ -52,7 +59,7 @@ async def collection_page(request: Request, collection_slug: str):
         raise HTTPException(status_code=404, detail="Collection not found")
 
     toc_sections = _build_toc_sections(gallery_service, active_slug=collection_slug)
-    photo_numerals = ["I", "II", "III", "IV", "V"]
+    photo_numerals = _PHOTO_NUMERALS[: len(collection.photos)]
 
     return templates.TemplateResponse(
         request=request,
