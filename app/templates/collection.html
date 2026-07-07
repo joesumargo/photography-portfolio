@@ -3,11 +3,13 @@
 {% block title %}{{ collection.title }} — Photography Portfolio{% endblock %}
 
 {% block content %}
-<div class="flex min-h-screen max-md:flex-col max-md:h-auto">
+<div class="flex min-h-screen max-md:flex-col">
 
-  {# ── Left: Collection info (~35-40%) ──────────────────── #}
-  <section class="w-[40%] flex flex-col justify-start pt-24 pl-20 pr-8
-                  max-md:w-full max-md:pt-12 max-md:px-4 max-md:order-1">
+  {# ── Left: Collection info (sticky on desktop) ─────────── #}
+  <section class="w-[40%] flex flex-col justify-center
+                  md:sticky md:top-0 md:h-screen
+                  pt-24 pl-20 pr-8 pb-24
+                  max-md:w-full max-md:pt-12 max-md:px-4 max-md:pb-8 max-md:h-auto">
     <h1 class="font-queens text-[48px] leading-none tracking-tight text-warm-brown">
       {{ collection.title }}
     </h1>
@@ -18,30 +20,44 @@
     {% endif %}
   </section>
 
-  {# ── Right: Photo grid (~60%) ─────────────────────────── #}
-  <section class="w-[60%] flex items-center py-6 pr-12
-                  max-md:w-full max-md:px-4 max-md:py-8 max-md:order-2">
-    <div class="grid grid-cols-3 gap-4 w-full">
-      {% for photo in collection.photos[:5] %}
-      <div class="flex flex-col gap-1">
-        <span class="font-queens font-extrabold text-[12px] text-warm-brown/30 shrink-0 select-none self-end">
-          {{ photo_numerals[loop.index0] }}
+  {# ── Right: Vertical image stack ───────────────────────── #}
+  <section class="w-[60%]
+                  max-md:w-full max-md:order-2">
+    {% if collection.photos %}
+      {% for photo in collection.photos %}
+      <div class="h-screen flex flex-col items-end
+                  max-md:h-auto max-md:items-center max-md:px-4 max-md:py-8">
+        {# Roman numeral label #}
+        <span class="font-queens font-extrabold text-[12px] text-warm-brown/30
+                     shrink-0 select-none pt-6 pr-6
+                     max-md:pr-0 max-md:pt-0 max-md:pb-2">
+          {{ photo_numerals[loop.index0] if loop.index0 < photo_numerals|length else "" }}
         </span>
-        <a href="#"
-           hx-get="/photo/{{ photo.id }}"
-           hx-target="#lightbox"
-           hx-swap="innerHTML"
-           hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')"
-           class="block hover:opacity-80 transition-opacity duration-200">
-          <img src="{{ photo.thumb_url }}"
-               alt="{{ photo.title }}"
-               class="w-full aspect-[7/8] object-cover rounded-sm shadow-md">
-        </a>
+        {# Image — fills remaining viewport height #}
+        <div class="flex-1 w-full flex items-center justify-center min-h-0 px-6 pb-6
+                    max-md:px-0 max-md:pb-0">
+          <a href="#"
+             hx-get="/photo/{{ photo.id }}"
+             hx-target="#lightbox"
+             hx-swap="innerHTML"
+             hx-on::after-request="document.getElementById('lightbox').classList.remove('hidden')"
+             class="block max-h-full max-w-full hover:opacity-80 transition-opacity duration-200">
+            <img src="{{ photo.medium_url }}"
+                 alt="{{ photo.title }}"
+                 loading="lazy"
+                 class="max-h-[85vh] max-w-full object-contain rounded-sm shadow-md">
+          </a>
+        </div>
       </div>
-      {% else %}
-      <p class="font-queens text-base text-warm-brown/50 italic col-span-full">No photos in this collection yet.</p>
       {% endfor %}
-    </div>
+    {% else %}
+      <div class="flex items-center justify-center h-64
+                  max-md:h-32">
+        <p class="font-queens text-base text-warm-brown/50 italic">
+          No photos in this collection yet.
+        </p>
+      </div>
+    {% endif %}
   </section>
 
 </div>
