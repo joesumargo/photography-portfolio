@@ -84,6 +84,7 @@ class GalleryService:
                 slug=c["slug"],
                 title=c["title"],
                 description=c.get("description", ""),
+                subtitle=c.get("subtitle", ""),
                 photos=resolved_photos,
             ))
 

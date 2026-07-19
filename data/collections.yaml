@@ -1,5 +1,20 @@
 collections:
   - slug: "home"
     title: "Memories of Home"
+    subtitle: |
+      Medan, North Sumatra
+      Yogyakarta, Jawa
     description: ""
-    photos: ["home-1", "home-2", "home-3", "home-4", "home-5"]
+    photos: ["home-1", "home-2", "home-3", "home-4", "home-5", "home-6", "home-7", "home-8"]
+
+  - slug: "landscape"
+    title: "Landscapes"
+    subtitle: ""
+    description: ""
+    photos: ["mountain-sunset", "harbor-dusk"]
+
+  - slug: "cityscape"
+    title: "Cityscapes"
+    subtitle: ""
+    description: ""
+    photos: ["misty-morning"]

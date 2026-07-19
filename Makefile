@@ -31,6 +31,10 @@ lint:
 format:
 	uv run ruff format app/ tests/ scripts/
 
+# Add a new photo (non-interactive CLI)
+add-photo:
+	uv run python scripts/add-photo.py
+
 # Generate thumbnails
 thumbnails:
 	uv run python scripts/generate-thumbnails.py

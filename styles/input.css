@@ -53,6 +53,19 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Mori';
+  src: url('../../fonts/PPMori-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Mori';
+  src: url('../../fonts/PPMori-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

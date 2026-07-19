@@ -60,3 +60,24 @@ photos:
     date: "2025-01-05"
     category: "home"
     featured: false
+
+  - id: "home-6"
+    title: "Home — VI"
+    description: ""
+    date: "2025-01-06"
+    category: "home"
+    featured: false
+
+  - id: "home-7"
+    title: "Home — VII"
+    description: ""
+    date: "2025-01-07"
+    category: "home"
+    featured: false
+
+  - id: "home-8"
+    title: "Home — VIII"
+    description: ""
+    date: "2025-01-08"
+    category: "home"
+    featured: false

@@ -26,4 +26,5 @@ class CollectionData(BaseModel):
     slug: str
     title: str
     description: str = ""
+    subtitle: str = ""
     photos: list[PhotoData] = []

@@ -50,7 +50,7 @@
            class="block font-queens text-[13px] text-warm-brown leading-tight whitespace-nowrap
                   hover:opacity-60 transition-opacity">
           <span class="inline-block w-5 font-extrabold text-[15px] {% if section.active %}text-black{% else %}text-warm-brown/40{% endif %}">{{ section.numeral }}</span>
-          <span class="ml-1 {% if section.active %}font-medium opacity-100{% else %}opacity-0 group-hover/row:opacity-100{% endif %} transition-opacity duration-150">{{ section.label }}</span>
+          <span class="ml-1 {% if section.active %}font-medium{% endif %}">{{ section.label }}</span>
         </a>
       </li>
       {% endfor %}
