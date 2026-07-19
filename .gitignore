@@ -220,8 +220,11 @@ __marimo__/
 # Fonts (trial license — do not commit)
 fonts/
 
-# Claude Code stuff
+# Images
+.DS_*
+
+# Vibe coding stuff
 docs/
 .superpowers/
 .claude
-real/
+photos/

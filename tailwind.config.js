@@ -12,6 +12,7 @@ module.exports = {
       fontFamily: {
         queens: ['Queens', 'serif'],
         'queens-condensed': ['Queens Condensed', 'serif'],
+        mori: ['Mori', 'sans-serif'],
       },
       width: {
         sticky: '48px',

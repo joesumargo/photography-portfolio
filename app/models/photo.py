@@ -19,3 +19,12 @@ class PhotoData(BaseModel):
     thumb_url: str = ""
     medium_url: str = ""
     full_url: str = ""
+
+
+class CollectionData(BaseModel):
+    """A named collection of photos."""
+    slug: str
+    title: str
+    description: str = ""
+    subtitle: str = ""
+    photos: list[PhotoData] = []

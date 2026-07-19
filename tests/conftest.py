@@ -13,11 +13,20 @@ def test_photos_yaml() -> Path:
 
 
 @pytest.fixture
-def app(test_photos_yaml: Path):
+def test_collections_yaml() -> Path:
+    """Absolute path to test collection metadata YAML file."""
+    return TEST_DATA_DIR / "collections.yaml"
+
+
+@pytest.fixture
+def app(test_photos_yaml: Path, test_collections_yaml: Path):
     """FastAPI app instance wired to test data, with lifespan triggered."""
     from app.main import create_app
 
-    application = create_app(photos_data_path=test_photos_yaml)
+    application = create_app(
+        photos_data_path=test_photos_yaml,
+        collections_data_path=test_collections_yaml,
+    )
     return application
 
 

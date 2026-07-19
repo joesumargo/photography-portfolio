@@ -24,7 +24,7 @@
       <ul class="space-y-[18px] max-lg:space-y-[31px] max-md:space-y-[31px]">
         {% for section in toc_sections %}
         <li>
-          <a href="#" class="group/toc flex items-end justify-between border-l-2 border-transparent hover:border-warm-brown/30 pl-3 transition-all duration-200">
+          <a href="{% if section.slug %}/{{ section.slug }}{% else %}#{% endif %}" class="group/toc flex items-end justify-between border-l-2 border-transparent hover:border-warm-brown/30 pl-3 transition-all duration-200">
             <span class="inline-block w-7 text-left font-queens font-extrabold text-[24px] leading-none tracking-tight text-warm-brown
                          max-lg:w-6 max-lg:text-[20px] max-md:w-5 max-md:text-[15px]">
               {{ section.numeral }}

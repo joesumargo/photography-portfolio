@@ -1,0 +1,5 @@
+collections:
+  - slug: "featured"
+    title: "Featured Works"
+    description: "A test collection for validation"
+    photos: ["test-landscape", "test-portrait"]
